@@ -32,7 +32,7 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:3001/api/users/users', {
+        const response = await axios.get('http://localhost:5001/api/users/users', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } 
         });
         setUserData(response.data);
@@ -45,10 +45,32 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
     fetchUserData();
   }, []);
 
+  const handleDeleteUser = async (userId) => {
+    const token = localStorage.getItem('jwt');
+    try {
+      await axios.delete(`http://localhost:5001/api/admin/users/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      // Update userData state to remove the deleted user
+      setUserData((prevUserData) => prevUserData.filter(user => user._id !== userId));
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   const data = userData.map((user) => ({
     profilePhoto: <ProfilePhoto picUrl={user.profilePhoto} />, // Pass user's profile picture URL
     username: user.username,
     tasks: user.tasks.map(task => task.name).join(", ") || "No tasks", // Join task names
+    actions: (
+      <Button 
+        variant="contained" 
+        color="secondary" 
+        onClick={() => handleDeleteUser(user._id)}
+      >
+        Delete
+      </Button>
+    ),
   }));
 
   const columns = [
@@ -63,6 +85,10 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
     {
       header: "Tasks",
       accessor: "tasks",
+    },
+    {
+      header: "Actions",
+      accessor: "actions", // Add actions column
     },
   ];
 
@@ -83,9 +109,7 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
 
       <div>
         <TopHeader className="fixed" head={head} />
-      
       </div>
-      <Button onClick={() => setSignupOpen(true)}>Add User</Button>
       <div className="ml-72 w-[75vw] relative" style={{ marginTop: "70px" }}>
         {data.length > 0 ? (
           <Table columns={columns} data={data} />
@@ -96,7 +120,7 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
         )}
       </div>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} /> {/* Render SignupModal */}
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} /> 
     </div>
   );
 };

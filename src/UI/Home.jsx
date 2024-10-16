@@ -12,6 +12,7 @@ import Configuration from "../Pages/Configuration_Screen/Configuration";
 import Dashboard from "../Pages/DashBoard_Screen/Dashboard";
 import UserDetails from "../Pages/User_Management/All_Users/all_user";
 import CMSAddMember from "../Pages/Content_Management/AllPages/Depts/CMSAddMember";
+import CreateNewPage from "../Pages/Content_Management/CreateNewPage/createNewPage";
 function Home() {
   const [expand, setExpand] = useState("");
   const navigate = useNavigate();
@@ -63,6 +64,16 @@ function Home() {
               path="/settings"
               element={
                 <Configuration
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+              <Route
+              exact
+              path="/AddnewTask"
+              element={
+                <CreateNewPage
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

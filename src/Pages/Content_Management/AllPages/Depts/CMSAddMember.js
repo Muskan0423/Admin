@@ -24,7 +24,7 @@ const CMSAddMember = ({ setExpand, setActiveTab }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3001/api/users/signup', data);
+      const response = await axios.post('http://localhost:5001/api/users/signup', data);
       alert(response.data.message); 
       Navigate('/');
     } catch (error) {

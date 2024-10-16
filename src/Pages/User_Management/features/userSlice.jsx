@@ -3113,7 +3113,7 @@ export const HSM_helpdesk = createAsyncThunk(
     // console.log("hello");
     try {
       const response = await axios.get(
-        `http://64.227.186.165:5002/getticketlist`, {
+        `http://64.227.186.165:5001/getticketlist`, {
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",

@@ -50,9 +50,6 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
   const head = "Member Details";
   const location = useLocation();
   const { mid } = useParams();
-  // console.log("iuytgu");
-  // console.log(mid);
-  // console.log("iuytgu");
   const handleVerify = async (status) => {
     try {
       setLoading(true);

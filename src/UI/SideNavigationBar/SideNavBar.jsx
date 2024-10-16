@@ -17,7 +17,7 @@ import cookie from "js-cookie";
 import { HelpCenterOutlined, LocalShippingOutlined, SupportAgentOutlined } from "@mui/icons-material";
 import { useEffect } from 'react';
 import {tssurl} from '../port.js';
-import defaultLogoSrc from '../Defaultlogo.jpg' 
+import defaultLogoSrc from '../Logo.avif' 
 
 function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
   const activeMenu = true;
@@ -82,7 +82,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             {Idata ? (
         <img src={Idata} alt="TSS"  className="max-w-[70%] h-auto max-h-[150px] mx-auto my-auto flex ml-8 mt-2" />
       ) : (
-        <img src={defaultLogoSrc} alt="Default Logo"   className=" max-w-[70%] mx-auto my-auto h-auto max-h-[150px] flex ml-8 mt-2" />
+        <img src={defaultLogoSrc} alt="Default Logo"   className=" max-w-[90%]  my-auto h-auto max-h-[180px] flex ml-2 mt-2" />
       )}
                           
         </Link>
@@ -159,6 +159,23 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 }}>
                 <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Add Users</span>
+              </NavLink>
+            </div>
+            <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/addNewTask"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Add task</span>
               </NavLink>
             </div>
 

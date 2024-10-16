@@ -8,7 +8,7 @@ const Dashboard = () => {
   const head = "Dashboard";
   const [data, setData] = useState(null);
   
-  const apiUrl = 'http://localhost:3001';
+  const apiUrl = 'http://localhost:5001';
   useEffect(() => {
     const fetchData = async () => {
       try {

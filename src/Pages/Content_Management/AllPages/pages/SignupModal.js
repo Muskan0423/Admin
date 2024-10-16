@@ -11,7 +11,7 @@ const SignupModal = ({ open, onClose }) => {
   const handleSignup = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3001/api/signup', {
+      const response = await axios.post('http://localhost:5001/api/signup', {
         username,
         email,
         password,
