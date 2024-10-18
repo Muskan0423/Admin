@@ -1,5 +1,5 @@
 const url1 = "https://apis.devcorps.in"; //5550
-const url2 = "https://apis.devcorps.in"; //5001
+const url2 = "https://apis.devcorps.in"; //5000
 const url3 = "https://apis.devcorps.in"; //5552
 const url4 = "https://apis2.devcorps.in"; //8080
 

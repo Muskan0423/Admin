@@ -32,7 +32,7 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5001/api/users/users', {
+        const response = await axios.get('http://localhost:5000/api/users/users', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } 
         });
         setUserData(response.data);
@@ -48,7 +48,7 @@ const CMSUsers = ({ setActiveTab, setExpand }) => {
   const handleDeleteUser = async (userId) => {
     const token = localStorage.getItem('jwt');
     try {
-      await axios.delete(`http://localhost:5001/api/admin/users/${userId}`, {
+      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       // Update userData state to remove the deleted user

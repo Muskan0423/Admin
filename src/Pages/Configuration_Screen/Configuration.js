@@ -16,7 +16,7 @@ const Configuration = ({ setActiveTab }) => {
   const dispatch = useDispatch();
   const LuserData = useSelector((state) => state.userManagement.getUserLogin);
   
-  const apiUrl = 'http://localhost:5001';
+  const apiUrl = 'http://localhost:5000';
   
   useEffect(() => {
     dispatch(getUserLogin(localStorage.getItem('uid')));

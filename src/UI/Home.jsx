@@ -13,6 +13,7 @@ import Dashboard from "../Pages/DashBoard_Screen/Dashboard";
 import UserDetails from "../Pages/User_Management/All_Users/all_user";
 import CMSAddMember from "../Pages/Content_Management/AllPages/Depts/CMSAddMember";
 import CreateNewPage from "../Pages/Content_Management/CreateNewPage/createNewPage";
+import TicketManagement from "../Pages/Tickets/TicketManagement";
 function Home() {
   const [expand, setExpand] = useState("");
   const navigate = useNavigate();
@@ -84,6 +85,16 @@ function Home() {
               path="/allUsers"
               element={
                 <UserDetails
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/ticket"
+              element={
+                <TicketManagement
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

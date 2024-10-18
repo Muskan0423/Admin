@@ -27,26 +27,7 @@ const TopHeader = (props) => {
         <div className="mt-5 mr-5" style={{marginLeft:530,marginBottom:30}}>
                
             </div>:null}
-        <div
-          className="flex h-20 items-center cursor-pointer"
-          style={{ marginRight: "20rem" }}>
-          <img
-            src={pic}
-            alt=""
-            style={{
-              objectFit:'cover',
-              objectPosition:'center',
-              height: "60px",
-              marginRight: "15px",
-              borderRadius: "50%",
-              width: "60px"
-            }}
-          />
-          <div>
-            <div className="text-xl font-bold">{name}</div>
-            <div className="text-sm font-semibold">{role}</div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );

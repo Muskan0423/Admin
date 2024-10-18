@@ -3,6 +3,8 @@ import React from "react";
 import TopHeader from "../../../../UI/TopHeader/TopHeader";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { CAlert } from '@coreui/react'; 
+
 
 const CMSAddMember = ({ setExpand, setActiveTab }) => {
   setExpand("contentManagement");
@@ -24,11 +26,17 @@ const CMSAddMember = ({ setExpand, setActiveTab }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/api/users/signup', data);
-      alert(response.data.message); 
+      const response = await axios.post('http://localhost:5000/api/users/signup', data);
+      <CAlert color="success">
+ {response.data.message}
+</CAlert>
+    
       Navigate('/');
     } catch (error) {
-      alert(error.response?.data?.message || "An error occurred");
+      <CAlert color="danger">
+{error.response?.data?.message || "An error occurred"}
+</CAlert>
+    
     }
   };
 

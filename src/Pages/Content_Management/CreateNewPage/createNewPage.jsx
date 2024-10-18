@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import React from "react";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 import axios from "axios";
+
 import { useDispatch } from "react-redux";
-import Table from "../../../UI/CommonTable/Table";
+import { useNavigate } from "react-router-dom";
 
 const CreateNewTask = ({ setExpand, setActiveTab }) => {
   setActiveTab("contentManagement");
   const head = "Create New Task";
   const dispatch = useDispatch();
-  
+  const navigate =useNavigate()
   const [title, setTitle] = useState("");
   const [userId, setUserId] = useState("");
   const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ const CreateNewTask = ({ setExpand, setActiveTab }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/users/users");
+        const response = await axios.get("http://localhost:5000/api/users/users");
         setUsers(response.data);
       } catch (err) {
         setError("Failed to fetch users");
@@ -31,14 +32,31 @@ const CreateNewTask = ({ setExpand, setActiveTab }) => {
     fetchUsers();
   
   }, []);
-
+  const handleLogout = () => {
+    try {
+      localStorage.clear();
+      navigate("/");
+      window.location.reload();
+    } catch (error) {
+    }
+  };
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     const token = localStorage.getItem('jwt'); 
-
+    function isTokenExpired(token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp < Date.now() / 1000;
+  }
+  
+    if (isTokenExpired(token)) {
+      alert('Session expired. Please log in again.');
+      handleLogout();
+      return;
+  }
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/admin/task",
+        "http://localhost:5000/api/admin/task",
         { userId, name: title },
         {
           headers: {
