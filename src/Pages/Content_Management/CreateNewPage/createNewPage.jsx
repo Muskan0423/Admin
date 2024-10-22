@@ -20,7 +20,7 @@ const CreateNewTask = ({ setExpand, setActiveTab }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users/users");
+        const response = await axios.get("https://backend-projectmanagement-qm5e.onrender.com/api/users/users");
         setUsers(response.data);
       } catch (err) {
         setError("Failed to fetch users");
@@ -56,7 +56,7 @@ const CreateNewTask = ({ setExpand, setActiveTab }) => {
   }
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/admin/task",
+        "https://backend-projectmanagement-qm5e.onrender.com/api/admin/task",
         { userId, name: title },
         {
           headers: {

@@ -11,7 +11,7 @@ const AddModal = ({ open, onClose }) => {
   const handleSignup = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post('https://backend-projectmanagement-qm5e.onrender.com/api/signup', {
         username,
         email,
         password,

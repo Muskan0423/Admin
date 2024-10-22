@@ -18,7 +18,7 @@ const TicketManagement = ({ setActiveTab, setExpand }) => {
     }, []);
 
     const fetchTickets = async () => {
-        const response = await fetch('http://localhost:5000/api/admin/tickets', {
+        const response = await fetch('https://backend-projectmanagement-qm5e.onrender.com/api/admin/tickets', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const TicketManagement = ({ setActiveTab, setExpand }) => {
     const handleResponse = async () => {
         if (!selectedTicketId) return;
 
-        const response = await fetch(`http://localhost:5000/api/admin/tickets/${selectedTicketId}`, {
+        const response = await fetch(`https://backend-projectmanagement-qm5e.onrender.com/api/admin/tickets/${selectedTicketId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
