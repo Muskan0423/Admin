@@ -30,7 +30,6 @@ pauseOnHover
 />
 <ToastContainer />
         <Router>
-          {/* top-header */}
           <Routes>
             <Route exact path="/" element={<Login />} />
             <Route exact path="/register" element={<Register />} />

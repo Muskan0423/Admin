@@ -3,7 +3,6 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { getUserLogin } from "../../User_Management/features/userSlice";
 
 function Login() {
   const navigate = useNavigate();
@@ -30,7 +29,6 @@ function Login() {
 
       const token = response.data.token; 
       localStorage.setItem("jwt", token);
-      await dispatch(getUserLogin(response.data.uid));
       setSuccessMessage("Logged in successfully! Redirecting...");
       setTimeout(() => {
         navigate("/home");

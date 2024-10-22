@@ -8,9 +8,6 @@ import { CRM, DeleteRelation, Order_Table, VeiwMember, Reward_Table, Internal_No
 import { Grid } from "react-loader-spinner";
 import axios from "axios";
 import { Alert, AlertTitle, Button } from "@mui/material";
-import cookie from "js-cookie";
-import { getUserLogin } from "../../User_Management/features/userSlice";
-import { tssurl, url1 } from "../../../UI/port";
 // Component inside action column
 const Action = ({
   username,

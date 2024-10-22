@@ -2,17 +2,8 @@ import React,{useEffect} from "react";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getUserLogin } from "../../Pages/User_Management/features/userSlice";
 
 const TopHeader = (props) => {
-  const dispatch = useDispatch();
-  const LuserData = useSelector((state) => state.userManagement.getUserLogin);
-  useEffect(() => {
-    dispatch(getUserLogin(localStorage.getItem('uid')))
-  }, [dispatch])
-  const name = LuserData.uname;
-  const role = LuserData.role;
-  const pic = LuserData.pic_url;
   const handleChange = (e) => {
     props.setTimeframe(e.target.value);
 };

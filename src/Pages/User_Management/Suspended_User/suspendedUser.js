@@ -6,12 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Grid } from "react-loader-spinner";
-import { DeleteSuspendUser, DeleteUser, getUser, suspendUsers } from "../features/userSlice";
 import { Alert, AlertTitle, Button } from "@mui/material";
 import { getUserLogin } from "../features/userSlice";
 import axios from "axios";
-import cookie from "js-cookie";
-import { tssurl, url1 } from "../../../UI/port";
 
 // Component inside action column
 // The details of user shall be different for every users. It will be integrated at authentication of the users.

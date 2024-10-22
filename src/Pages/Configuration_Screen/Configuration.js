@@ -2,25 +2,17 @@ import React, { useState, useEffect } from "react";
 import TopHeader from "../../UI/TopHeader/TopHeader";
 import axios from "axios";
 import { Snackbar, Alert } from "@mui/material";
-import Cookies from "js-cookie";
 import { Grid } from "react-loader-spinner";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getUserLogin } from "../User_Management/features/userSlice";
 
 const Configuration = ({ setActiveTab }) => {
   const [tasks, setTasks] = useState({ pending: [], fulfilled: [] });
   const [loading, setLoading] = useState(true);
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [editedTaskName, setEditedTaskName] = useState('');
-  const dispatch = useDispatch();
-  const LuserData = useSelector((state) => state.userManagement.getUserLogin);
   
   const apiUrl = 'http://localhost:5000';
   
-  useEffect(() => {
-    dispatch(getUserLogin(localStorage.getItem('uid')));
-  }, [dispatch]);
+ 
 
   useEffect(() => {
     async function fetchTasks() {
